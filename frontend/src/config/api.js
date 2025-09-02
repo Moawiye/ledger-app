@@ -7,7 +7,7 @@ export const API_CONFIG = {
   // Production (Railway) - Set VITE_RAILWAY_URL in Vercel environment variables
   production: import.meta.env.VITE_RAILWAY_URL 
     ? `${import.meta.env.VITE_RAILWAY_URL}/api/ledger`
-    : 'https://ledger-app-production.up.railway.app/api/ledger';  // ✅ FIXED!
+    : 'https://ledger-app-production.up.railway.app/api/ledger'
 };
 
 // Auto-detect environment and use appropriate URL
