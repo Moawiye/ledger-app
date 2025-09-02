@@ -1,6 +1,9 @@
 # Use OpenJDK 21 for Spring Boot
 FROM openjdk:21-jdk-slim
 
+# Install curl for health checks
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
 # Set working directory
 WORKDIR /app
 
@@ -30,5 +33,9 @@ WORKDIR /app
 # Expose port
 EXPOSE 8080
 
-# Run the application (using the correct path)
-CMD ["java", "-jar", "target/ledger-backend-0.0.1-SNAPSHOT.jar"]
+# Add health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+  CMD curl -f http://localhost:8080/api/ledger || exit 1
+
+# Run the application with proper JVM options
+CMD ["java", "-Xmx512m", "-Xms256m", "-jar", "target/ledger-backend-0.0.1-SNAPSHOT.jar"]
