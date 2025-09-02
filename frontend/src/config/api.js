@@ -7,7 +7,7 @@ export const API_CONFIG = {
   // Production (Railway) - Set VITE_RAILWAY_URL in Vercel environment variables
   production: import.meta.env.VITE_RAILWAY_URL 
     ? `${import.meta.env.VITE_RAILWAY_URL}/api/ledger`
-    : 'https://your-actual-railway-url.railway.app/api/ledger'  // ← UPDATE THIS!
+    : 'https://ledger-app-production.up.railway.app/api/ledger';  // ✅ FIXED!
 };
 
 // Auto-detect environment and use appropriate URL
@@ -16,4 +16,4 @@ export const API_BASE_URL = isDevelopment ? API_CONFIG.development : API_CONFIG.
 
 console.log('🌐 API Base URL:', API_BASE_URL);
 console.log('🔧 Environment:', isDevelopment ? 'Development' : 'Production');
-console.log('🚂 Railway URL:', import.meta.env.VITE_RAILWAY_URL || 'Not set');
+console.log('🚂 Railway URL:', import.meta.env.VITE_RAILWAY_URL || 'https://ledger-app-production.up.railway.app');
