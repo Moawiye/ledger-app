@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/ledger")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"http://localhost:5173", "https://ledger-app-six.vercel.app", "https://*.vercel.app"})
 public class LedgerController {
     
     private final LedgerService ledgerService;
